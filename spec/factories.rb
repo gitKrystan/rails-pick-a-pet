@@ -1,7 +1,17 @@
 FactoryGirl.define do
   factory :question do
-    after(:build) do |question|
-      create_list(:answer, 2, question: question)
+    transient do
+      answers_count 2
+    end
+
+    after(:build) do |question, evaluator|
+      question.answers << build_list(:answer, 2)
+    end
+
+    factory :question_with_description do
+      sequence :content do |n|
+        "Question #{n}"
+      end
     end
   end
 

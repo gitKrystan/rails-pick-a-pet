@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     2.times { @question.answers.build }
-    @answers = @question.answers
+    set_answers
   end
 
   # GET /questions/1/edit
@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to questions_path, notice: 'Question was successfully created.'
     else
+      set_answers
       render :new
     end
   end
