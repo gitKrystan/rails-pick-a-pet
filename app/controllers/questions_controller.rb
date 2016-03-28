@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_answers, only: [:edit, :update]
 
   # GET /questions
   def index
@@ -9,6 +10,8 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    2.times { @question.answers.build }
+    @answers = @question.answers
   end
 
   # GET /questions/1/edit
@@ -47,8 +50,14 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
 
+    def set_answers
+      @answers = @question.answers
+    end
+
     # Only allow a trusted parameter "white list" through.
     def question_params
-      params.require(:question).permit(:content, :description)
+      params.require(:question)
+            .permit(:description,
+                    answers_attributes: [:id, :content])
     end
 end

@@ -1,10 +1,14 @@
 <%= form_for(@question) do |f| %>
   <%= render 'layouts/errors', object: @question %>
 
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
+  <div class="row">
+    <% @answers.each.with_index(1) do |answer, index| %>
+      <%= f.fields_for :answers, answer do |answer_fields| %>
+        <%= render 'answer_fields', f: answer_fields, index: index %>
+      <% end %>
+    <% end %>
   </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
