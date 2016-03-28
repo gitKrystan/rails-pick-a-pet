@@ -8,5 +8,5 @@
   <%= question.description %>
 </p>
 
-<%= link_to 'Edit', edit_question_path(question) %> |
+<%= link_to 'Edit', edit_question_path(question), id: "edit-question-#{question.id}" %> |
 <%= link_to 'Back', questions_path %>
