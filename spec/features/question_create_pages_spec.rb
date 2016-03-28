@@ -5,7 +5,7 @@ describe 'the create a question path' do
 
   it 'creates a question when the required fields are filled in' do
     visit root_path
-    click_link 'New Choice'
+    first(:link, 'New Choice').click
     fill_in 'Content', with: test_question[:content]
     click_button 'Create Question'
     expect(page).to have_content(test_question[:content])
