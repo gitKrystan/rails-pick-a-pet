@@ -1,0 +1,36 @@
+.field,
+.actions {
+  @extend .form-group;
+}
+
+label {
+  @extend .control-label;
+}
+
+input {
+  &[type=email],
+  &[type=password],
+  &[type=text] {
+    @extend .form-control;
+  }
+
+  &[type=button] {
+    @extend .btn, .btn-default;
+  }
+
+  &[type=submit] {
+    @extend .btn;
+
+    &[name="commit"] {
+      @extend .btn-success;
+    }
+
+    &.dec-btn-delete {
+      @extend .btn-danger;
+    }
+  }
+}
+
+select {
+  @extend .form-control;
+}
