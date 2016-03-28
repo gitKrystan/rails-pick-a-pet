@@ -8,9 +8,13 @@
     </p>
     <p>
       <% question.answers.each do |answer| %>
-      <div class="col-sm-6">
-        <%= answer.content %>
-      </div>
+        <div class="col-sm-6">
+          <%= form_for [answer, @vote] do |f| %>
+            <%= f.submit id: "vote-answer-#{answer.id}" %>
+              <h5><%= answer.content %></h5>
+              <h1><%= answer.vote_count %></h1>
+          <% end %>
+        </div>
       <% end %>
     </p>
   </div>
