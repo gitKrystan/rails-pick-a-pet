@@ -10,4 +10,10 @@ describe 'the create a question path' do
     click_button 'Create Question'
     expect(page).to have_content(test_question[:content])
   end
+
+  it 'gives an error message when the required fields are missing' do
+    visit new_question_path
+    click_button 'Create Question'
+    expect(page).to have_content('error')
+  end
 end
