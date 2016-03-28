@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @question %> |
+<%= link_to 'Destroy', @question, method: :delete,
+            data: { confirm: 'Are you sure?' },
+            id: "destroy-question-#{@question.id}" %> |
 <%= link_to 'Back', questions_path %>
