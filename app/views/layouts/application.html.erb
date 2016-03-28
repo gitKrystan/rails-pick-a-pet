@@ -44,10 +44,11 @@
 <!-- Main wrapper -->
 <div class="container">
   <!-- Page header -->
+  <% if content_for? :header %>
   <div class="page-header">
     <h1><%= yield :header %></h1>
   </div>
-
+  <% end %>
   <!-- Main content -->
   <%= yield %>
 </div>
