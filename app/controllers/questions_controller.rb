@@ -6,10 +6,6 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  # GET /questions/1
-  def show
-  end
-
   # GET /questions/new
   def new
     @question = Question.new
@@ -24,7 +20,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      redirect_to questions_path, notice: 'Question was successfully created.'
     else
       render :new
     end
@@ -33,7 +29,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
+      redirect_to questions_path, notice: 'Question was successfully updated.'
     else
       render :edit
     end
