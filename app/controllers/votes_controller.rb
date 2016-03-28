@@ -7,6 +7,9 @@ class VotesController < ApplicationController
     else
       flash[:alert] = 'Oops. Something went wrong. Call Mike for more info.'
     end
-    redirect_to questions_path
+    respond_to do |format|
+      format.html { redirect_to questions_path }
+      format.js
+    end
   end
 end

@@ -9,10 +9,10 @@
     <p>
       <% question.answers.each do |answer| %>
         <div class="col-sm-6">
-          <%= form_for [answer, @vote] do |f| %>
+          <%= form_for [answer, @vote], remote: true do |f| %>
             <%= f.submit id: "vote-answer-#{answer.id}" %>
               <h5><%= answer.content %></h5>
-              <h1><%= answer.vote_count %></h1>
+              <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>
           <% end %>
         </div>
       <% end %>
