@@ -1,1 +1,2 @@
-<%= pie_chart @question.chart_data %>
+<h5>Here's how you stack up to other respondents:</h5>
+<%= pie_chart @question.chart_data, id: "question-#{@question.id}", colors: ["#18bc9c", "#2c3e50"] %>

@@ -15,6 +15,7 @@ class Question < ActiveRecord::Base
 
   def chart_data
     raw_data = votes.group(:answer).count
-    raw_data.map {|k, v| [k.content, v]}.to_h
+    raw_data.map { |k, v| [k.content, v] }.to_h
+            .sort_by { |k, v| v }.reverse.to_h
   end
 end

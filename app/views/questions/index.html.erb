@@ -5,3 +5,7 @@
 <% end %>
 
 <%= link_to 'New Choice', new_question_path %>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "http://code.highcharts.com/highcharts.js", "chartkick" %>
+<% end %>

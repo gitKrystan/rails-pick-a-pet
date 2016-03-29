@@ -1,5 +1,5 @@
 <%= form_for [answer, @vote], remote: true do |f| %>
-  <a href="#" class="thumbnail">
+  <a class="thumbnail">
     <%= image_tag(answer.image(:thumb)) %>
     <div class="caption">
       <h5><%= answer.content %></h5>
