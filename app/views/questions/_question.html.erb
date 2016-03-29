@@ -16,9 +16,6 @@
       </div>
     <% end %>
     <div class="col-sm-6">
-      <div id="comments-about-<%=question.id%>">
-        <%= render question.comments %>
-      </div>
       <%= form_for [question, @comment], remote: true do |f| %>
         <div class="input-group", id="comment-question-<%=question.id%>" >
           <%= f.text_field :content %>
@@ -27,6 +24,9 @@
           </span>
         </div>
       <% end %>
+      <div id="comments-about-<%=question.id%>" class="comments">
+        <%= render question.comments.order(created_at: :desc) %>
+      </div>
     </div>
   </div>
   <div class="panel-footer">
