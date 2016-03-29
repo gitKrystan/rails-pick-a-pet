@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   def create
     @answer = Answer.find(params[:answer_id])
+    @question = @answer.question
     vote = @answer.votes.new
     @notice = 'Thanks for voting!'
     if vote.save
