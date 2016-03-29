@@ -20,4 +20,11 @@ FactoryGirl.define do
       "Answer #{n}"
     end
   end
+
+  factory :comment do
+    question
+    sequence :content do |n|
+      "Comment #{n}"
+    end
+  end
 end

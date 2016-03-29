@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'questions#index'
-  resources :questions, except: [:show]
+  resources :questions, except: [:show] do
+    resources :comments, only: [:create]
+  end
   resources :answers, only: [] do
     resources :votes, only: [:create]
   end

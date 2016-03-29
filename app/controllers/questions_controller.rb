@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @vote = Vote.new
+    @comment = Comment.new
   end
 
   # GET /questions/new

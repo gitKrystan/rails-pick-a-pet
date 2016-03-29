@@ -6,17 +6,26 @@
     <p>
       <%= question.description %>
     </p>
-    <p>
-      <% question.answers.each do |answer| %>
-        <div class="col-sm-6">
-          <%= form_for [answer, @vote], remote: true do |f| %>
-            <%= f.submit id: "vote-answer-#{answer.id}" %>
-              <h5><%= answer.content %></h5>
-              <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>
-          <% end %>
+    <% question.answers.each do |answer| %>
+      <div class="col-sm-3">
+        <%= form_for [answer, @vote], remote: true do |f| %>
+          <%= f.submit id: "vote-answer-#{answer.id}" %>
+            <h5><%= answer.content %></h5>
+            <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="col-sm-6">
+      <%= render question.comments %>
+      <%= form_for [question, @comment] do |f| %>
+        <div class="input-group", id="comment-question-<%=question.id%>" >
+          <%= f.text_field :content %>
+          <span class="input-group-btn">
+            <%= f.submit 'Comment' %>
+          </span>
         </div>
       <% end %>
-    </p>
+    </div>
   </div>
   <div class="panel-footer">
     <%= link_to 'Edit', edit_question_path(question), id: "edit-question-#{question.id}" %>
