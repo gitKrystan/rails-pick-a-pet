@@ -6,15 +6,20 @@
     <p>
       <%= question.description %>
     </p>
-    <div class="col-md-6">
-      <% question.answers.each do |answer| %>
-      <div class="col-md-4">
-        <%= render 'votes/form', answer: answer %>
-        <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <%= render question.first_answer %>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <%= render question.second_answer %>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <h1>graphs go here</h1>
+        </div>
       </div>
-      <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-6">
       <%= render 'comments/form', question: question %>
       <div id="comments-about-<%=question.id%>" class="comments">
         <%= render question.comments.order(created_at: :desc) %>

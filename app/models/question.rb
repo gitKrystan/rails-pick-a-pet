@@ -4,4 +4,12 @@ class Question < ActiveRecord::Base
   validates :answers, presence: true
 
   has_many :comments, dependent: :destroy
+
+  def first_answer
+    answers[0]
+  end
+
+  def second_answer
+    answers[1]
+  end
 end
