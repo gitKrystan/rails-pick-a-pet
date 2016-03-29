@@ -6,29 +6,16 @@
     <p>
       <%= question.description %>
     </p>
-    <% question.answers.each do |answer| %>
-      <div class="col-sm-3">
-        <%= form_for [answer, @vote], remote: true do |f| %>
-          <a href="#" class="thumbnail">
-            <%= image_tag(answer.image(:thumb)) %>
-            <div class="caption">
-              <h5><%= answer.content %></h5>
-            </div>
-          </a>
-          <%= f.submit id: "vote-answer-#{answer.id}" %>
-          <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>
-        <% end %>
+    <div class="col-md-6">
+      <% question.answers.each do |answer| %>
+      <div class="col-md-4">
+        <%= render 'votes/form', answer: answer %>
+        <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>
       </div>
-    <% end %>
-    <div class="col-sm-6">
-      <%= form_for [question, @comment], remote: true do |f| %>
-        <div class="input-group", id="comment-question-<%=question.id%>" >
-          <%= f.text_field :content %>
-          <span class="input-group-btn">
-            <%= f.submit 'Comment' %>
-          </span>
-        </div>
       <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= render 'comments/form', question: question %>
       <div id="comments-about-<%=question.id%>" class="comments">
         <%= render question.comments.order(created_at: :desc) %>
       </div>

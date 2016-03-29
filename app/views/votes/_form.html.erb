@@ -1,0 +1,9 @@
+<%= form_for [answer, @vote], remote: true do |f| %>
+  <a href="#" class="thumbnail">
+    <%= image_tag(answer.image(:thumb)) %>
+    <div class="caption">
+      <h5><%= answer.content %></h5>
+    </div>
+  </a>
+  <%= f.submit id: "vote-answer-#{answer.id}" %>
+<% end %>
