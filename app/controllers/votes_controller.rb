@@ -2,8 +2,9 @@ class VotesController < ApplicationController
   def create
     @answer = Answer.find(params[:answer_id])
     vote = @answer.votes.new
+    @notice = 'Thanks for voting!'
     if vote.save
-      flash[:notice] = 'Thanks for voting!'
+      flash[:notice] = @notice
     else
       flash[:alert] = 'Oops. Something went wrong. Call Mike for more info.'
     end
