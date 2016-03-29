@@ -8,9 +8,12 @@ describe 'the create a question path' do
     visit root_path
     first(:link, 'New Choice').click
     fill_in 'answer-1-content', with: test_answer_1_attributes[:content]
+    page.attach_file('image-1', 'spec/fixtures/images/cat.jpg')
     fill_in 'answer-2-content', with: test_answer_2_attributes[:content]
+    page.attach_file('image-2', 'spec/fixtures/images/cat.jpg')
     click_button 'Create Question'
     expect(page).to have_content(test_answer_1_attributes[:content])
+    expect(page).to have_css("img[src*='cat.jpg']")
     expect(current_path).to eq questions_path
   end
 

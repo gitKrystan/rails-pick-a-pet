@@ -9,6 +9,7 @@
     <% question.answers.each do |answer| %>
       <div class="col-sm-3">
         <%= form_for [answer, @vote], remote: true do |f| %>
+          <%= image_tag(answer.image(:thumb)) %>
           <%= f.submit id: "vote-answer-#{answer.id}" %>
             <h5><%= answer.content %></h5>
             <h1 id=<%="answer-#{answer.id}-vote-count"%>><%= answer.vote_count %></h1>

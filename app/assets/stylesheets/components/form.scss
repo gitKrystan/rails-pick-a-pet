@@ -15,7 +15,8 @@ label {
 input {
   &[type=email],
   &[type=password],
-  &[type=text] {
+  &[type=text],
+  &[type=file] {
     @extend .form-control;
   }
 

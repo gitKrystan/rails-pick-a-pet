@@ -1,8 +1,15 @@
 <div class="col-md-6">
   <fieldset>
-    <div class="field">
-      <%= f.label :content, "Answer #{index}" %><br>
-      <%= f.text_field :content, id: "answer-#{index}-content" %>
+    <div class="well">
+      <legend>Answer <%= index %></legend>
+      <div class="field">
+        <%= f.label :content, "Description" %><br>
+        <%= f.text_field :content, id: "answer-#{index}-content" %>
+      </div>
+      <div class="field">
+        <%= f.label :image, "Image" %><br />
+        <%= f.file_field :image, id: "image-#{index}" %>
+      </div>
     </div>
   </fieldset>
 </div>

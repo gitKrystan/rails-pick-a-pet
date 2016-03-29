@@ -61,6 +61,6 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question)
             .permit(:description,
-                    answers_attributes: [:id, :content])
+                    answers_attributes: [:id, :content, :image])
     end
 end

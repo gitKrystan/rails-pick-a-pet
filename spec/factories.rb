@@ -1,3 +1,5 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
   factory :question do
     transient do
@@ -19,6 +21,7 @@ FactoryGirl.define do
     sequence :content do |n|
       "Answer #{n}"
     end
+    image { fixture_file_upload( File.join(Rails.root, 'spec', 'fixtures', 'images', 'cat.jpg'), 'image/jpeg') }
   end
 
   factory :comment do
