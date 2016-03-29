@@ -16,8 +16,10 @@
       </div>
     <% end %>
     <div class="col-sm-6">
-      <%= render question.comments %>
-      <%= form_for [question, @comment] do |f| %>
+      <div id="comments-about-<%=question.id%>">
+        <%= render question.comments %>
+      </div>
+      <%= form_for [question, @comment], remote: true do |f| %>
         <div class="input-group", id="comment-question-<%=question.id%>" >
           <%= f.text_field :content %>
           <span class="input-group-btn">

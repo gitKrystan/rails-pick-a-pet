@@ -4,15 +4,17 @@ class CommentsController < ApplicationController
     @comment = @question.comments.new(comment_params)
     if @comment.save
       flash[:notice] = 'Thanks for commenting!'
+      respond_to do |format|
+        format.js
+        format.html { redirect_to questions_path }
+      end
     else
       flash[:alert] = 'Oops. Something went wrong. Call Mike for more info.'
-    end
-    respond_to do |format|
-      format.html { redirect_to questions_path }
-      # format.js
+      respond_to do |format|
+        format.html { redirect_to questions_path }
+      end
     end
   end
-
   private
 
   def comment_params
