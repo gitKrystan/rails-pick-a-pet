@@ -1,2 +1,6 @@
 $('#comments-about-<%=@question.id%>').append('<%= j render @comment %>')
 $('#comment-question-<%=@question.id%> input[type=text]').val('')
+$('#flash-messages').html('<%= j render "layouts/flash", key: "notice", value: @notice %>')
+setTimeout(function() {
+  $('#flash-messages').html('')
+}, 2000)
