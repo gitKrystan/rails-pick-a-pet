@@ -2,7 +2,7 @@
 
 ##### By Krystan Menne and Mike Mahoney
 
-This sample Rails app allows user to upload photos of potential pets (using Paperclip) so that other users can choose between them in a "Would You Rather?" game format. The site tracks how many votes each potential pet has received and displays these votes in a chart (using ChartKick).
+This sample Rails app allows users to upload photos of potential pets (using Paperclip) so that other users can choose between them in a "Would You Rather?" game format. The site tracks how many votes each potential pet has received and displays these votes in a chart (using ChartKick).
 
 Features:
 * AJAX requests
